@@ -1,0 +1,10 @@
+{
+  "codeFolder" : "./codes",
+  "templatePath" : "./template.tex",
+  "outputFilePath" : "./reference.tex",
+  "excluded" : [".vscode", "__pycache__"],
+  "columns" : 2,
+  "templatePlaceHolder" : "CODE HERE",
+  "sortBefore" : ["Data Structures"],
+  "sortAfter" : ["Extras"]
+}

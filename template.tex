@@ -1,0 +1,144 @@
+% run the command ' lualatex -shell-escape Reference.tex ' twice in the terminal to visualize table of contents
+\documentclass[twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{minted}
+\usepackage{python}
+\usepackage{fontspec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{needspace}
+\usepackage{sectsty}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{afterpage}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage[inline]{enumitem}
+
+\graphicspath{ {./media/} }
+
+\definecolor{prussianblue}{rgb}{0.0, 0.19, 0.33}
+\definecolor{indigo(dye)}{rgb}{0.0, 0.25, 0.42}
+\definecolor{lapislazuli}{rgb}{0.15, 0.38, 0.61}
+\definecolor{mediumelectricblue}{rgb}{0.01, 0.31, 0.59}
+\definecolor{smalt(darkpowderblue)}{rgb}{0.0, 0.2, 0.6}
+\definecolor{yaleblue}{rgb}{0.06, 0.3, 0.57}
+\definecolor{skobeloff}{rgb}{0.0, 0.48, 0.45}
+\definecolor{pinegreen}{rgb}{0.0, 0.47, 0.44}
+\definecolor{coolgray}{RGB}{49, 63, 71}
+\definecolor{coolpink}{RGB}{255,116,150}
+
+\setmainfont[
+    BoldFont=nexabold.ttf
+]{nexalight.ttf}
+
+\setsansfont[
+    BoldFont=nexabold.ttf
+]{nexalight.ttf}
+
+\geometry{letterpaper, landscape, left=0.5cm, right=0.5cm, top=1.8cm, bottom=1cm}
+
+\sectionfont{\Huge\bfseries\sffamily}
+
+\setminted{
+    style=manni,
+    breaklines=true,
+    breakanywhere=true,
+    tabsize=4
+}
+
+\setlength{\color{coolpink}\headsep}{0.5cm}
+\setlength{\columnsep}{0.5cm}
+\setlength{\columnseprule}{0.1cm}
+\renewcommand{\columnseprulecolor}{\color{coolpink}}
+
+
+\pagenumbering{arabic}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LO,RE]{\textcolor{coolgray}{Enya Quetzalli Gómez Rodríguez}}
+\fancyhead[LE,RO]{\textcolor{coolgray}{\leftmark}}
+\fancyfoot[LE,RO]{\textcolor{coolgray}{\textbf{\thepage}}}
+
+\renewcommand{\headrulewidth}{0.05cm}
+\renewcommand{\footrulewidth}{0.01cm}
+\newcommand\YUGE{\fontsize{35}{50}\selectfont}
+
+\setlength{\parindent}{0em}
+% column space
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+% upper and lower padding
+\renewcommand{\arraystretch}{1.5} % Default value: 1
+
+\begin{document}
+
+    \pagecolor{coolgray}
+    \vspace*{\fill}
+        \textcolor{coolpink}{\centerline{\YUGE\textbf{Competitive Programming Reference}}}
+        
+        \noindent
+        \vskip5mm
+        \centerline{{\color{coolpink} \rule{200 mm}{1 mm} }}
+        \vskip5mm
+        
+        \textcolor{coolpink}{\centerline{\Huge{Enya Quetzalli Gómez Rodríguez}}}
+        
+        \vskip35mm
+        
+        \textcolor{coolpink}{\centerline{\large{eithnegomez@hotmail.com}}}
+        \textcolor{coolpink}{\centerline{\large{egomezr}}}
+    \vfill
+    
+    \newpage
+    \pagecolor{white}
+    \thispagestyle{empty}
+    \null
+    \newpage
+    
+    \pagestyle{fancy}
+    \newpage
+    
+
+\selectfont
+    \begin{multicols*}{2}
+    \color{coolgray}
+        \tableofcontents
+        \newpage
+        CODE HERE
+    \end{multicols*}
+    
+    \newpage
+    \thispagestyle{empty}
+    \textcolor{coolgray}{\centerline{\Huge\textbf{Competitive Programming Reference}}}
+    \vskip5mm
+    \textcolor{coolgray}{\centerline{\large{\textbf{Created by:} Enya Quetzalli Gómez Rodríguez}}}
+    \vskip1mm
+    \textcolor{coolgray}{\centerline{\large{\textbf{Created with:} mkcpr reference}}}
+    \vskip1mm
+    \textcolor{coolgray}{\centerline{\large{\textbf{Created on:} March 30, 2020}}}
+    \vskip1mm
+    \textcolor{coolgray}{\centerline{\large{\textbf{Last Update:} \today}}}
+    \vskip10mm
+
+    \begin{center}
+        \textcolor{coolgray}{\center{\large{\textbf{I met the competitive programming at my university "The Superior School of Computer Sciences of the National Polytechnic Institute", thanks to a club within the school called "algorithmic club", where I met ICPC and loved competitive programming, this group of people at I belong has offered me everything I know now, we always pass all our knowledge to the following generations, and we all contribute to our community to achieve more and more. I will always be grateful to this group of people who changed my life}}}}
+    \end{center}
+    
+    \vskip10mm
+    
+     \textcolor{coolgray}{\centerline{\large{\textbf{Special thanks:}}}}
+     
+     \centering
+     \includegraphics[width=4cm, height=4cm]{logo_huron_circular}
+     
+     
+\end{document}
