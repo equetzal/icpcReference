@@ -113,7 +113,50 @@
     \color{coolgray}
         \tableofcontents
         \newpage
-        \needspace{36\baselineskip}
+        \needspace{18\baselineskip}
+\sectionfont{\bfseries\sffamily\centering\Huge}
+\vspace{1em}
+\section*{Data Structures}
+\markboth{DATA STRUCTURES}{}
+\addcontentsline{toc}{section}{Data Structures}
+\vspace{3em}
+\subsectionfont{\large\bfseries\sffamily\underline}
+\subsection*{STL Queue}
+\addcontentsline{toc}{subsection}{STL Queue}
+\begin{minted}{cpp}
+#include <queue>
+
+queue<int> q,p;
+q.push(int(111)); //Receives an object copy
+q.emplace(111); //Uses the constructor of the object
+int val = q.front(); //Acces head element
+int val = q.back(); //Access tail element
+int sz = q.size();
+q.pop();
+q.empty();
+q.swap(p); //Swap queue contents in O(1)
+
+\end{minted}
+
+\needspace{13\baselineskip}
+\subsectionfont{\large\bfseries\sffamily\underline}
+\subsection*{STL Stack}
+\addcontentsline{toc}{subsection}{STL Stack}
+\begin{minted}{cpp}
+#include <stack>
+
+stack<int> s,p;
+s.push(int(111)); //Receives an object copy
+s.emplace(111); //Uses the constructor of the object
+int val = s.top();
+int sz = s.size();
+s.pop();
+s.empty();
+s.swap(p); //Swap stack contents in O(1)
+
+\end{minted}
+
+\needspace{36\baselineskip}
 \sectionfont{\bfseries\sffamily\centering\Huge}
 \vspace{1em}
 \section*{Extras}
