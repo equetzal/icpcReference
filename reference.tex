@@ -113,16 +113,21 @@
     \color{coolgray}
         \tableofcontents
         \newpage
-        \needspace{18\baselineskip}
+        \needspace{20\baselineskip}
 \sectionfont{\bfseries\sffamily\centering\Huge}
 \vspace{1em}
 \section*{Data Structures}
 \markboth{DATA STRUCTURES}{}
 \addcontentsline{toc}{section}{Data Structures}
 \vspace{3em}
-\subsectionfont{\large\bfseries\sffamily\underline}
-\subsection*{STL Queue}
-\addcontentsline{toc}{subsection}{STL Queue}
+\subsectionfont{\bfseries\sffamily\centering\LARGE}
+\vspace{0em}
+\subsection*{STL}
+\addcontentsline{toc}{subsection}{STL}
+\vspace{2em}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Queue}
+\addcontentsline{toc}{subsubsection}{STL Queue}
 \begin{minted}{cpp}
 #include <queue>
 
@@ -138,10 +143,10 @@ q.swap(p); //Swap queue contents in O(1)
 
 \end{minted}
 
-\needspace{13\baselineskip}
-\subsectionfont{\large\bfseries\sffamily\underline}
-\subsection*{STL Stack}
-\addcontentsline{toc}{subsection}{STL Stack}
+\needspace{12\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Stack}
+\addcontentsline{toc}{subsubsection}{STL Stack}
 \begin{minted}{cpp}
 #include <stack>
 
@@ -153,6 +158,294 @@ int sz = s.size();
 s.pop();
 s.empty();
 s.swap(p); //Swap stack contents in O(1)
+
+\end{minted}
+
+\needspace{14\baselineskip}
+\sectionfont{\bfseries\sffamily\centering\Huge}
+\vspace{1em}
+\section*{Math}
+\markboth{MATH}{}
+\addcontentsline{toc}{section}{Math}
+\vspace{3em}
+\subsectionfont{\bfseries\sffamily\centering\LARGE}
+\vspace{0em}
+\subsection*{Number Theory}
+\addcontentsline{toc}{subsection}{Number Theory}
+\vspace{2em}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Greatest Common Divisor}
+\addcontentsline{toc}{subsubsection}{Greatest Common Divisor}
+\begin{minted}{cpp}
+lli gcd(lli a, lli b){
+	lli r;
+	while(b != 0) r = a % b, a = b, b = r;
+	return a;
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{5\baselineskip}
+\begin{minted}{cpp}
+lli gcd(vector<lli> & nums){
+	lli ans = 0;
+	for(lli & num : nums) ans = gcd(ans, num);
+	return ans;
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{11\baselineskip}
+\begin{minted}{cpp}
+lli extendedGcd(lli a, lli b, lli & s, lli & t){
+	lli q, r0 = a, r1 = b, ri, s0 = 1, s1 = 0, si, t0 = 0, t1 = 1, ti;
+	while(r1){
+		q = r0 / r1;
+		ri = r0 % r1, r0 = r1, r1 = ri;
+		si = s0 - s1 * q, s0 = s1, s1 = si;
+		ti = t0 - t1 * q, t0 = t1, t1 = ti;
+	}
+	s = s0, t = t0;
+	return r0;
+}
+
+\end{minted}
+
+\needspace{5\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Lowest Common Multiple}
+\addcontentsline{toc}{subsubsection}{Lowest Common Multiple}
+\begin{minted}{cpp}
+lli lcm(lli a, lli b){
+	return b * (a / gcd(a, b));
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{5\baselineskip}
+\begin{minted}{cpp}
+lli lcm(vector<lli> & nums){
+	lli ans = 1;
+	for(lli & num : nums) ans = lcm(ans, num);
+	return ans;
+}
+
+\end{minted}
+
+\needspace{12\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Modular Inverse}
+\addcontentsline{toc}{subsubsection}{Modular Inverse}
+\begin{minted}{cpp}
+lli modularInverse(lli a, lli m){
+	lli r0 = a, r1 = m, ri, s0 = 1, s1 = 0, si;
+	while(r1){
+		si = s0 - s1 * (r0 / r1), s0 = s1, s1 = si;
+		ri = r0 % r1, r0 = r1, r1 = ri;
+	}
+	if(r0 < 0) s0 *= -1;
+	if(s0 < 0) s0 += m;
+	return s0;
+}
+
+\end{minted}
+
+\needspace{16\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Multiplication}
+\addcontentsline{toc}{subsubsection}{Multiplication}
+\begin{minted}{cpp}
+lli multMod(lli a, lli b, lli n){
+	lli ans = 0;
+	a %= n, b %= n;
+	if(abs(b) > abs(a)) swap(a, b);
+	if(b < 0){
+		a *= -1, b *= -1;
+	}
+	while(b){
+		if(b & 1) ans = (ans + a) % n;
+		b >>= 1;
+		a = (a + a) % n;
+	}
+	return ans;
+}
+
+\end{minted}
+
+\needspace{13\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Number Base}
+\addcontentsline{toc}{subsubsection}{Number Base}
+\begin{minted}{cpp}
+string decimalToBaseB(lli n, lli b){
+	string ans = "";
+	lli d;
+	do{
+		d = n % b;
+		if(0 <= d && d <= 9) ans = (char)(48 + d) + ans;
+		else if(10 <= d && d <= 35) ans = (char)(55 + d) + ans;
+		n /= b;
+	}while(n != 0);
+	return ans;
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{9\baselineskip}
+\begin{minted}{cpp}
+lli baseBtoDecimal(const string & n, lli b){
+	lli ans = 0;
+	for(const char & d : n){
+		if(48 <= d && d <= 57) ans = ans * b + (d - 48);
+		else if(65 <= d && d <= 90) ans = ans * b + (d - 55);
+		else if(97 <= d && d <= 122) ans = ans * b + (d - 87);
+	}
+	return ans;
+}
+
+\end{minted}
+
+\needspace{11\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Power}
+\addcontentsline{toc}{subsubsection}{Power}
+\begin{minted}{cpp}
+lli power(lli b, lli e){
+	lli ans = 1;
+	while(e){
+		if(e & 1) ans *= b;
+		e >>= 1;
+		b *= b;
+	}
+	return ans;
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{14\baselineskip}
+\begin{minted}{cpp}
+lli powerMod(lli b, lli e, lli m){
+	lli ans = 1;
+	b %= m;
+	if(e < 0){
+		b = modularInverse(b, m);
+		e *= -1;
+	}
+	while(e){
+		if(e & 1) ans = (ans * b) % m;
+		e >>= 1;
+		b = (b * b) % m;
+	}
+	return ans;
+}
+
+\end{minted}
+
+\needspace{2\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Random Number}
+\addcontentsline{toc}{subsubsection}{Random Number}
+\begin{minted}{cpp}
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+lli aleatorio(lli a, lli b){
+	std::uniform_int_distribution<lli> dist(a, b);
+	return dist(rng);
+}
+
+\end{minted}
+
+\needspace{34\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Roman Numbers}
+\addcontentsline{toc}{subsubsection}{Roman Numbers}
+\begin{minted}{cpp}
+string decimalToRoman(int n){
+	int d, b = 0;
+	string ans = "";
+	vector<vector<char>> datos = {{'I', 'V'}, {'X', 'L'}, {'C', 'D'}, {'M', '\0'}};
+	int miles = n / 1000;
+	do{
+		string tmp = "";
+		d = n % 10;
+		n /= 10;
+		if(b < 3){
+			if(0 <= d && d <= 3){
+				tmp.append(d, datos[b][0]);
+			}else if(d == 4){
+				tmp += datos[b][0];
+				tmp += datos[b][1];
+			}else if(5 <= d && d <= 8){
+				tmp += datos[b][1];
+				tmp.append(d - 5, datos[b][0]);
+			}else if(d == 9){
+				tmp += datos[b][0];
+				tmp += datos[b + 1][0];
+			}
+		}else{
+			tmp.append(miles, 'M');
+			ans = tmp + ans;
+			break;
+		}
+		ans = tmp + ans;
+		b++;
+	}while(n != 0);
+	return ans;
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{21\baselineskip}
+\begin{minted}{cpp}
+int romanToDecimal(string n){
+	int ans = 0;
+	char curr, prev;
+	bool f = false;
+	map<char, int> datos = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+	for(int i = n.size() - 1; i >= 0; i--){
+		curr = n[i];
+		if(i > 0) prev = n[i - 1];
+		if(curr == 'V' && prev == 'I') ans += 4, f = true;
+		else if(curr == 'X' && prev == 'I') ans += 9, f = true;
+		else if(curr == 'L' && prev == 'X') ans += 40, f = true;
+		else if(curr == 'C' && prev == 'X') ans += 90, f = true;
+		else if(curr == 'D' && prev == 'C') ans += 400, f = true;
+		else if(curr == 'M' && prev == 'C') ans += 900, f = true;
+		else{
+			if(!f) ans += datos[curr];
+			f = false;
+		}
+	}
+	return ans;
+}
+
+\end{minted}
+
+\needspace{10\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Rounding}
+\addcontentsline{toc}{subsubsection}{Rounding}
+\begin{minted}{cpp}
+lli piso(lli a, lli b){
+	if((a >= 0 && b > 0) || (a < 0 && b < 0)){
+		return a / b;
+	}else{
+		if(a % b == 0) return a / b;
+		else return a / b - 1;
+	}
+}
+
+\end{minted}
+\vspace{-12pt}
+\needspace{8\baselineskip}
+\begin{minted}{cpp}
+lli techo(lli a, lli b){
+	if((a >= 0 && b > 0) || (a < 0 && b < 0)){
+		if(a % b == 0) return a / b;
+		else return a / b + 1;
+	}else{
+		return a / b;
+	}
+}
 
 \end{minted}
 
