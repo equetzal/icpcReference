@@ -113,7 +113,7 @@
         \begin{multicols*}{2}
 \tableofcontents
 \newpage
-\needspace{20\baselineskip}
+\needspace{22\baselineskip}
 \sectionfont{\bfseries\sffamily\centering\Huge}
 \vspace{1em}
 \section*{Data Structures}
@@ -126,24 +126,120 @@
 \addcontentsline{toc}{subsection}{STL}
 \vspace{2em}
 \subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Map}
+\addcontentsline{toc}{subsubsection}{STL Map}
+\begin{minted}{cpp}
+#include <map>
+
+map<int,string> m,p;
+map<pair<int,int>,string> mpii;
+m[111] = "val"; //Insert, or replace element in map
+auto val = m[111]; //Return element with key 111, if no key create key with default val
+m.erase(111); //Erase element with key 111
+m.merge(p); //Insert or replace p elements into s in O(|S|log(|P|+|S|))
+int val = s.count(111); //Return number of elements in map with key 111
+set<map>::iterator it = s.find(111); //Return m.end() if not found, or map iterator if found
+auto it = m.lower_bound(111); //Return first not-less element than key in O(logN)
+auto it = m.upper_bound(111); //Return first element greater than key in O(logN)
+s.swap(p); //Swap map contents in O(1)
+
+\end{minted}
+
+\needspace{18\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Multi Map}
+\addcontentsline{toc}{subsubsection}{STL Multi Map}
+\begin{minted}{cpp}
+#include <multimap>
+
+multimap<string,string> m;
+m.emplace("key","val"); //Insert element in multimap
+m.erase(it); //Erase element at iterator = it
+m.erase(itBegin, itEnd); //Erase elements in range from itBegin to itEnd
+m.erase("key"); //Erase all elements with key
+m.clear(); //Erase all elements in multimap
+int val = m.count("key"); //Return number of elements with key
+
+//To get elements with same key
+auto range = m.equal_range("key"); //Return a pair of begin-end iterators which holds elements equal to key
+cout << "for key[key] -> ";
+for(auto it=range.first; it!=range.end; it++)
+	cout << (*it).second << " ";
+cout << endl;
+
+\end{minted}
+
+\needspace{18\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Multi Set}
+\addcontentsline{toc}{subsubsection}{STL Multi Set}
+\begin{minted}{cpp}
+#include <multiset>
+
+//multiset is the same as set, but s.count() can be more than 1
+set<int> s,p;
+set<pair<int,int>> spii;
+s.insert(int(111)); //Insert value in vector
+spii.insert(make_pair(11,22));
+s.emplace(111); //Insert but with constructor
+spii.emplace(11,22);
+s.erase(111); //Erase element with value 111
+s.merge(p); //Insert p elements into s in O(|S|log(|P|+|S|))
+int val = s.count(111); //Return number insertions-erations in set with value 111
+set<int>::iterator it = s.find(111); //Return s.end() if not found, or set iterator if found
+auto it = s.lower_bound(111); //Return first not-less element than arg in O(logN)
+auto it = s.upper_bound(111); //Return first element greater than arg in O(logN)
+s.swap(p); //Swap set contents in O(1)
+
+\end{minted}
+
+\needspace{17\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
 \subsubsection*{STL Queue}
 \addcontentsline{toc}{subsubsection}{STL Queue}
 \begin{minted}{cpp}
 #include <queue>
 
 queue<int> q,p;
+queue<pair<int,int>> qpii;
 q.push(int(111)); //Receives an object copy
+qpii.push(make_pair(11,22);
 q.emplace(111); //Uses the constructor of the object
+qpii.emplace(11,22);
 int val = q.front(); //Acces head element
 int val = q.back(); //Access tail element
 int sz = q.size();
 q.pop();
 q.empty();
 q.swap(p); //Swap queue contents in O(1)
+q.clear(); //Erase elements of queue
 
 \end{minted}
 
-\needspace{12\baselineskip}
+\needspace{17\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Set}
+\addcontentsline{toc}{subsubsection}{STL Set}
+\begin{minted}{cpp}
+#include <set>
+
+set<int> s,p;
+set<pair<int,int>> spii;
+s.insert(int(111)); //Insert value in vector
+spii.insert(make_pair(11,22));
+s.emplace(111); //Insert but with constructor
+spii.emplace(11,22);
+s.erase(111); //Erase element with value 111
+s.merge(p); //Insert p elements into s in O(|S|log(|P|+|S|))
+int val = s.count(111); //Return number of elements in set with value 111
+set<int>::iterator it = s.find(111); //Return s.end() if not found, or set iterator if found
+auto it = s.lower_bound(111); //Return first not-less element than arg in O(logN)
+auto it = s.upper_bound(111); //Return first element greater than arg in O(logN)
+s.swap(p); //Swap set contents in O(1)
+
+\end{minted}
+
+\needspace{16\baselineskip}
 \subsubsectionfont{\large\bfseries\sffamily\underline}
 \subsubsection*{STL Stack}
 \addcontentsline{toc}{subsubsection}{STL Stack}
@@ -151,13 +247,44 @@ q.swap(p); //Swap queue contents in O(1)
 #include <stack>
 
 stack<int> s,p;
+stack<pair<int,int>> spii;
 s.push(int(111)); //Receives an object copy
+spii.push(make_pair(11,22));
 s.emplace(111); //Uses the constructor of the object
-int val = s.top();
-int sz = s.size();
-s.pop();
-s.empty();
+spii.emplace(11,22);
+int val = s.top(); //Return value of element at tio
+int val = s.size(); //Return number of elements in stack
+s.pop(); //Erase the element at the top of stack
+bool val = s.empty(); //Return true if stack is empty
 s.swap(p); //Swap stack contents in O(1)
+s.clear() //Erase elements of stack
+
+\end{minted}
+
+\needspace{21\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{STL Vector}
+\addcontentsline{toc}{subsubsection}{STL Vector}
+\begin{minted}{cpp}
+#include <vector>
+
+vector<int> v,p;
+vector<pair<int,int>> vpii;
+v.push_back(int(111)); //Insert value at end of vector
+v.pop_back(); //Erase the element at end of vector
+int val = v.back(); //Return value at end of vector
+int val = v.front(); //Return value at begin of vector
+v.insert(v.begin()+pos, int(111); //Insert element before pos in O(pos)
+vpii.insert(v.begin()+pos, make_pair(11,22));
+v.emplace(v.begin()+pos, 111); //Insert, but uses constructor after pos arg
+vpii.emplace(v.begin()+pos, 11,22);
+v.erase(v.begin()+pos); //Erase element at pos in O(n)
+v.clear(); //Clear the contents of a vector O(n)
+int val = v.size(); //Return size of vector -> cast size_t to int
+bool val = v.emtpy(); //Return true if vector is empty
+v.resize(5); //If arg is smaller than size, it cuts the vector, if not, expand array with default init
+v.resize(5,0); //If arg si larger than size, init values with 2nd arg
+v.swap(p); //Swap vector contents in O(1)
 
 \end{minted}
 
