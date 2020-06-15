@@ -1,0 +1,20 @@
+{
+    "codeFolder": "/mnt/c/Users/eithn/Downloads/icpcReference/CodeFolderName",
+    "templatePath": "/mnt/c/Users/eithn/Downloads/icpcReference/template.tex",
+    "outputFilePath": "/mnt/c/Users/eithn/Downloads/icpcReference/output.tex",
+    "excluded": [
+        ".vscode",
+        "__pycache__"
+    ],
+    "columns": 2,
+    "templatePlaceHolder": "CODE HERE",
+    "sortBefore": [
+        "Data Structures"
+    ],
+    "sortAfter": [
+        "Extras"
+    ],
+    "tableOfContents": true,
+    "titlePagePath": "",
+    "fontFamily": "lmss"
+}

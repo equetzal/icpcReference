@@ -109,11 +109,11 @@
     
 
 \selectfont
-    \begin{multicols*}{2}
     \color{coolgray}
-        \tableofcontents
-        \newpage
-        \needspace{20\baselineskip}
+        \begin{multicols*}{2}
+\tableofcontents
+\newpage
+\needspace{20\baselineskip}
 \sectionfont{\bfseries\sffamily\centering\Huge}
 \vspace{1em}
 \section*{Data Structures}
@@ -158,6 +158,24 @@ int sz = s.size();
 s.pop();
 s.empty();
 s.swap(p); //Swap stack contents in O(1)
+
+\end{minted}
+
+\needspace{7\baselineskip}
+\subsubsectionfont{\large\bfseries\sffamily\underline}
+\subsubsection*{Unordered Map Key=Pair}
+\addcontentsline{toc}{subsubsection}{Unordered Map Key=Pair}
+\begin{minted}{cpp}
+struct pairhash { template <class T1, class T2>
+	size_t operator()(const pair<T1, T2> &p) const {
+		return hash<T1>{}(p.first) ^ (hash<T2>{}(p.second) << 32);
+	}
+};
+\end{minted}
+\vspace{-12pt}
+\needspace{1\baselineskip}
+\begin{minted}{cpp}
+unordered_map<pair<int, int>, int, hash_pair> umap;
 
 \end{minted}
 
@@ -493,6 +511,48 @@ lli techo(lli a, lli b){
 
 \end{minted}
 
+\needspace{10\baselineskip}
+\subsectionfont{\large\bfseries\sffamily\underline}
+\subsection*{Output Hacks}
+\addcontentsline{toc}{subsection}{Output Hacks}
+\begin{minted}{cpp}
+double pi = 3.14159265359;
+cout << pi << endl;
+// "3.14159"
+cout << setprecision(7) << pi << endl;
+// "3.141593"
+cout << fixed << setprecision(7) << pi << endl;
+// "3.1415927"
+
+\end{minted}
+\vspace{-12pt}
+\needspace{9\baselineskip}
+\begin{minted}{cpp}
+int v = 220;
+cout << v << endl;
+// "220"
+cout << setw(6) << v << endl;
+// "   220"
+cout << setw(6) << setfill('0') << v << endl;
+// "000220"
+cout << setw(6) << setfill('0') << left << v << endl;
+// "220000"
+
+\end{minted}
+\vspace{-12pt}
+\needspace{8\baselineskip}
+\begin{minted}{cpp}
+cout << hex << v << endl;
+// "dc" (hex lowercase print)
+cout << uppercase << v << endl;
+// "DC" (HEX uppercase print)
+cout << oct << v << endl;
+// "334" (Octal print)
+cout << bitset<8>(v) << endl;
+// "11011100" (N-bit Binary Unsigned Int print)
+
+\end{minted}
+
 \needspace{5\baselineskip}
 \subsectionfont{\large\bfseries\sffamily\underline}
 \subsection*{Read Data From Files}
@@ -524,8 +584,8 @@ int main(){
 }
 \end{minted}
 
+\end{multicols*}
 
-    \end{multicols*}
     
     \newpage
     \thispagestyle{empty}

@@ -6,5 +6,7 @@
   "columns" : 2,
   "templatePlaceHolder" : "CODE HERE",
   "sortBefore" : ["Data Structures"],
-  "sortAfter" : ["Extras"]
+  "sortAfter" : ["Extras"],
+  "tableOfContents": true,
+  "titlePagePath": ""
 }
